@@ -1,14 +1,14 @@
 (function main($){
     
     // scroll spy
-    $('body').scrollspy({ offset: 91, target: "#navbarNav" });
+    // $('body').scrollspy({ offset: 91, target: "#navbarNav" });
     
     // redirect after guide link has been opened
-    $('[href*="GUIDE.pdf"]').click(function(){
-        window.setTimeout(function(){
-            window.location = window.homeurl + "/thank-you-a";
-        },2000);
-    });
+    // $('[href*="GUIDE.pdf"]').click(function(){
+    //     window.setTimeout(function(){
+    //         window.location = window.homeurl + "/thank-you-a";
+    //     },2000);
+    // });
         
     // Smooth scrolling
     $('a[href*=#]:not([href=#])').click(function() {
