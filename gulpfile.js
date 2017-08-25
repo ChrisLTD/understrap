@@ -201,17 +201,18 @@ gulp.task('scripts', function() {
         basePaths.dev + 'js/bootstrap4/bootstrap.js',
 
         // End - All BS4 stuff
+        basePaths.dev + 'js/skip-link-focus-fix.js',
 
-        basePaths.dev + 'js/skip-link-focus-fix.js'
+        // Main custom JS
+        basePaths.dev + 'js/main.js'
     ];
   gulp.src(scripts)
-    .pipe(concat('theme.min.js'))
-    .pipe(uglify())
+    .pipe(sourcemaps.init())
+        .pipe(concat('theme.min.js'))
+        .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./js/'));
 
-  gulp.src(scripts)
-    .pipe(concat('theme.js'))
-    .pipe(gulp.dest('./js/'));
 });
 
 // Deleting any file inside the /src folder
@@ -262,7 +263,7 @@ gulp.task('copy-assets', ['clean-source'], function() {
     gulp.src(basePaths.node + 'popper.js/dist/umd/popper.min.js')
         .pipe(gulp.dest(basePaths.js));
         
-    gulp.src(basePaths.node + 'popper.js/dist/umd/popper.js')
+    gulp.src(basePaths.node + 'popper.js/dist/umd/popper.min.js.map')
         .pipe(gulp.dest(basePaths.js));
     return stream;
 });
