@@ -123,3 +123,16 @@ function slugify ($str, $replace="-") {
   $str = strtolower(trim($str, $replace));
   return $str;
 }
+
+/**
+ * Add post/page slug to body tag
+ */
+function slug_body_class($classes) {
+  // Add post/page slug
+  if (is_single() || is_page() && !is_front_page()) {
+    $classes[] = basename(get_permalink());
+  }
+
+  return $classes;
+}
+add_filter('body_class', 'slug_body_class');
