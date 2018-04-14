@@ -1,15 +1,15 @@
 (function main($){
-    
+
     // scroll spy
     // $('body').scrollspy({ offset: 91, target: "#navbarNav" });
-    
+
     // redirect after guide link has been opened
     // $('[href*="GUIDE.pdf"]').click(function(){
     //     window.setTimeout(function(){
     //         window.location = window.homeurl + "/thank-you-a";
     //     },2000);
     // });
-        
+
     // Smooth scrolling
     $('a[href*=#]:not([href=#])').click(function() {
             console.log('smooth scroll!');
@@ -19,18 +19,28 @@
             smoothScrollTo( target );
         }
     });
-    
+
+    //now scroll to the anchor when loading page
+        $(document).ready(function() {
+        if (!window.location.hash) { return; }
+
+        var hash = window.location.hash;
+        var target = $(hash);
+        target = target.length ? target : $('[name=' + hash.slice(1) +']');
+        smoothScrollTo(target);
+    });
+
     // Toggle active
     $('[data-toggle-active]').click(function(event) {
         event.preventDefault();
         var $toggleTarget = $( $(this).data('toggle-active') );
         $toggleTarget.toggleClass('active');
-    });    
-    
+    });
+
     // Equalize heights
     var equalizeChildrenHeight = debounce(function(parentSelector) {
         setTimeout(function(){
-            
+
             // naive equal heights script
             $(parentSelector).each(function(){
                 var highestBox = 0;
@@ -42,14 +52,14 @@
                 });
                 $('.equalize-heights',this).height(highestBox);
             });
-            
+
         }, 250);
     }, 250);
     equalizeChildrenHeight('.equalize-children');
-    
+
     // equalize again after page has been have resized
-    window.addEventListener('resize', function(){ equalizeChildrenHeight('.equalize-children'); });  
-    
+    window.addEventListener('resize', function(){ equalizeChildrenHeight('.equalize-children'); });
+
     // Debounce http://davidwalsh.name/javascript-debounce-function
     function debounce(func, wait, immediate) {
         var timeout;
@@ -69,7 +79,7 @@
             }
         };
     }
-    
+
     // Smooth Scroll Helper
     function smoothScrollTo($target){
         if ($target.length) {
@@ -77,6 +87,6 @@
             $('html,body').animate({ scrollTop: scrollValue }, 1000);
             return false;
         }
-    }  
-    
+    }
+
 })(jQuery);
