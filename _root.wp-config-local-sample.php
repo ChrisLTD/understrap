@@ -24,4 +24,7 @@ define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . $local_path);
 // Don't show deprecations; useful under PHP 5.5
 error_reporting(E_ALL ^ E_DEPRECATED);
 
-// define('WP_DEBUG', true);
+// ini_set('display_errors','Off');
+// ini_set('error_reporting', E_ALL );
+// define('WP_DEBUG', false);
+// define('WP_DEBUG_DISPLAY', false);
