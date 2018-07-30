@@ -13,3 +13,17 @@ dist-product
 npm-debug.log
 
 /vendor/
+
+.DS_Store
+
+Thumbs.db
+
+.svn
+
+.cvs
+
+*.bak
+
+*.swp
+
+.idea

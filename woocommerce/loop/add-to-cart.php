@@ -1,7 +1,7 @@
 <?php
 /**
  * Loop Add to Cart
- * Updated for Understrap to maintain Woocommerce 3.0.3 compatability.
+ *
  * This template can be overridden by copying it to yourtheme/woocommerce/loop/add-to-cart.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see        https://docs.woocommerce.com/document/template-structure/
- * @author        WooThemes
- * @package    WooCommerce/Templates
- * @version     3.0.0
+ * @see 	    https://docs.woocommerce.com/document/template-structure/
+ * @author 		WooThemes
+ * @package 	WooCommerce/Templates
+ * @version     3.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,12 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-echo apply_filters( 'woocommerce_loop_add_to_cart_link',
-	sprintf( '<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="add_to_cart_button ajax_add_to_cart btn btn-outline-primary btn-block">%s</a>',
+echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+	sprintf( '<div class="add-to-cart-container"><a href="%s" data-quantity="%s" class="%s product_type_%s single_add_to_cart_button btn btn-outline-primary btn-block %s" %s> %s</a></div>',
 		esc_url( $product->add_to_cart_url() ),
-		esc_attr( isset( $quantity ) ? $quantity : 1 ),
-		esc_attr( $product->get_id() ),
-		esc_attr( $product->get_sku() ),
+		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+		$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+		esc_attr( $product->get_type() ),
+		$product->get_type() == 'simple' ? 'ajax_add_to_cart' : '',
+		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
 		esc_html( $product->add_to_cart_text() )
 	),
-	$product );
+$product, $args );
