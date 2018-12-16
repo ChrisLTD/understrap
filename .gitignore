@@ -25,5 +25,4 @@ Thumbs.db
 *.bak
 
 *.swp
-
-.idea
+.idea/
