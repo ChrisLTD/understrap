@@ -1,9 +1,9 @@
 <?php
 
-define('DB_NAME',          'dev-db-name');
+define('DB_NAME',          'wordpress');
 define('DB_USER',          'root');
 define('DB_PASSWORD',      'root');
-define('DB_HOST',          'localhost');
+define('DB_HOST',          'localhost'); // 'mysql' in Docker
 define('DB_CHARSET',       'utf8');
 define('DB_COLLATE',       '');
 
@@ -16,6 +16,12 @@ define('AUTH_SALT',        'zyI]Q|ZI$4A=Vt}8h~Y4F(|<<F3=2&evJL88Ga2BA04umt-HRWs*
 define('SECURE_AUTH_SALT', 'z#e6+V[+>t8>+MD|J3QA,iA-@G.rv&Ni!>L]= M-9}KJ]pJC|i4[,3yrb>X+M1B ');
 define('LOGGED_IN_SALT',   'z^ttm(EFN}4ybo.gc/o DGGI&hG+{2}@$zXu)GMjU6qID`@bH]R!rD;Fk2#rEd$}');
 define('NONCE_SALT',       'z/zc%,r>XhZDSR3mYXf`r}6+:W+k/8Qf0=QYf6W~{Gakhyk2|bR7gRT%s@xLm4)6');
+
+// Uncomment below to force SSL
+// define('FORCE_SSL_ADMIN', true);
+// if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+//  $_SERVER['HTTPS']='on';
+// }
 
 $local_path = ':8888/project-directory-here/';
 define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME'] . $local_path);
