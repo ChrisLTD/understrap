@@ -136,3 +136,15 @@ function slug_body_class($classes) {
   return $classes;
 }
 add_filter('body_class', 'slug_body_class');
+
+/**
+ * Prefix for jump links in the navbar
+ * @return nothing if it's the homepage, or the homepage url if it's not
+ */
+function jump_link_prefix() {
+  global $post;
+  if (is_front_page() || is_page('b')) {
+    return '';
+  }
+  return get_bloginfo('url') . '/';
+}
