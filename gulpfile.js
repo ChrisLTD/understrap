@@ -5,6 +5,8 @@ var sass = require( 'gulp-sass' );
 var watch = require( 'gulp-watch' );
 var rename = require( 'gulp-rename' );
 var concat = require( 'gulp-concat' );
+var babelify = require( 'babelify' );
+var browserify = require( 'browserify' );
 var uglify = require( 'gulp-uglify' );
 var imagemin = require( 'gulp-imagemin' );
 var ignore = require( 'gulp-ignore' );
@@ -16,6 +18,8 @@ var cleanCSS = require( 'gulp-clean-css' );
 var gulpSequence = require( 'gulp-sequence' );
 var replace = require( 'gulp-replace' );
 var autoprefixer = require( 'gulp-autoprefixer' );
+var buffer = require( 'vinyl-buffer' );
+var source = require( 'vinyl-source-stream' );
 
 // Configuration file to keep your code DRY
 var cfg = require( './gulpconfig.json' );
@@ -149,6 +153,20 @@ gulp.task( 'scripts', function() {
   gulp.src( scripts )
     .pipe( concat( 'theme.js' ) )
     .pipe( gulp.dest( paths.js ) );
+
+
+  var bundler = browserify(paths.dev + '/js/app.js', { debug: false })
+    .transform(babelify,
+        {presets: ["@babel/env"], plugins:["@babel/plugin-transform-react-jsx"]}
+    );
+
+  bundler.bundle()
+    .on('error', function(err) { console.error(err); this.emit('end'); })
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.js));
 });
 
 // Deleting any file inside the /src folder
