@@ -49,7 +49,7 @@ gulp.task( 'sass', function() {
 // Starts watcher. Watcher runs gulp sass task on changes
 gulp.task( 'watch', function() {
     gulp.watch( paths.sass + '/**/*.scss', ['styles'] );
-    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js'], ['scripts'] );
+    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js', '!js/app.js'], ['scripts'] );
 
     //Inside the watch task.
     gulp.watch( paths.imgsrc + '/**', ['imagemin-watch'] );
@@ -157,7 +157,7 @@ gulp.task( 'scripts', function() {
 
   var bundler = browserify(paths.dev + '/js/app.js', { debug: false })
     .transform(babelify,
-        {presets: ["@babel/env"], plugins:["@babel/plugin-transform-react-jsx"]}
+      {presets: ["@babel/env"], plugins:["@babel/plugin-transform-react-jsx"]}
     );
 
   bundler.bundle()
