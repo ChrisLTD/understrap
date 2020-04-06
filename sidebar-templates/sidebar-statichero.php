@@ -1,15 +1,14 @@
 <?php
 /**
- * Static hero sidebar setup.
+ * Static hero sidebar setup
  *
  * @package understrap
  */
 
-$container = get_theme_mod( 'understrap_container_type' );
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
+$container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <?php if ( is_active_sidebar( 'statichero' ) ) : ?>
@@ -30,4 +29,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div><!-- #wrapper-static-hero -->
 
-<?php endif; ?>
+<?php endif;

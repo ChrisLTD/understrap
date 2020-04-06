@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.6.0
+ * @version 3.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,4 +32,4 @@ do_action( 'woocommerce_before_account_navigation' );
 	</div>
 </nav>
 
-<?php do_action( 'woocommerce_after_account_navigation' ); ?>
+<?php do_action( 'woocommerce_after_account_navigation' );

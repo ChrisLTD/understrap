@@ -1,13 +1,12 @@
 <?php
 /**
- * Right sidebar check.
+ * Right sidebar check
  *
  * @package understrap
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 ?>
 
 </div><!-- #closing the primary container from /global-templates/left-sidebar-check.php -->
@@ -16,6 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
 
-  <?php get_template_part( 'sidebar-templates/sidebar', 'right' ); ?>
+	<?php get_template_part( 'sidebar-templates/sidebar', 'right' ); ?>
 
-<?php endif; ?>
+<?php endif;

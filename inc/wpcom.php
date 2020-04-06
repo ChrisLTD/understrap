@@ -7,9 +7,8 @@
  * @package understrap
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Adds support for wp.com-specific theme functions.
@@ -18,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action( 'after_setup_theme', 'understrap_wpcom_setup' );
 
-if ( ! function_exists ( 'understrap_wpcom_setup' ) ) {
+if ( ! function_exists( 'understrap_wpcom_setup' ) ) {
 	function understrap_wpcom_setup() {
 		global $themecolors;
 
@@ -44,7 +43,7 @@ if ( ! function_exists ( 'understrap_wpcom_setup' ) ) {
  */
 add_action( 'wp_enqueue_scripts', 'understrap_wpcom_styles' );
 
-if ( ! function_exists ( 'understrap_wpcom_styles' ) ) {
+if ( ! function_exists( 'understrap_wpcom_styles' ) ) {
 	function understrap_wpcom_styles() {
 		wp_enqueue_style( 'understrap-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
 	}

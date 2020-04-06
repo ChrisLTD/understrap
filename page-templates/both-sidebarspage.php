@@ -7,9 +7,8 @@
  * @package understrap
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
@@ -51,11 +50,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</div><!-- #primary -->
 
 			<?php get_template_part( 'sidebar-templates/sidebar', 'right' ); ?>
-			
+
 		</div><!-- .row -->
 
-	</div><!-- Container end -->
+	</div><!-- #content -->
 
-</div><!-- Wrapper end -->
+</div><!-- #page-wrapper -->
 
-<?php get_footer(); ?>
+<?php get_footer();
