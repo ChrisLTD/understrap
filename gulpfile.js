@@ -168,7 +168,9 @@ gulp.task('scripts', function () {
 
 		// Adding currently empty javascript file to add on for your own themes´ customizations
 		// Please add any customizations to this .js file only!
-		`${paths.dev}/js/custom-javascript.js`
+		`${paths.dev}/js/custom-javascript.js`,
+		`${paths.dev}/js/main.js`,
+		// `${paths.dev}/js/app.js`,
 	];
 	gulp
 		.src(scripts, { allowEmpty: true })
