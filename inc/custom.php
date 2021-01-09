@@ -166,3 +166,27 @@ function get_truncated_excerpt($limit, $source = null){
 	$excerpt = $excerpt.'&hellip;';
 	return $excerpt;
 }
+
+/**
+ * Return menu items as A elements
+ * @param array $nav_array
+ * @param string $css_class for A elements
+ * @return array of html strings
+ */
+function nav_menu_a_elements($nav_array, $css_class = '') {
+  $output = array();
+  foreach($nav_array as $item) {
+    $output[] = "<a href='$item->url' class='$css_class' data-id='$item->ID'>$item->title</a>";
+  }
+  return $output;
+}
+
+/**
+ * Get menu array from theme location
+ * @param string $location
+ * @return array menu
+ */
+function get_menu_array_from_location($location) {
+  $locations = get_nav_menu_locations();
+  $menu = wp_get_nav_menu_object( $locations[$location] );
+  return wp_get_nav_menu_items($menu->term_id);
