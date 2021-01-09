@@ -1,6 +1,6 @@
-<?php if (defined('the_flexible_field')): ?>
+<?php if (function_exists('have_rows')): ?>
 
-	<?php while(the_flexible_field("page_layouts")): ?>
+	<?php while(have_rows("page_layouts")): the_row(); ?>
 
 		<?php include(locate_template('layouts/layout-' . get_row_layout() . '.php')); ?>
 
