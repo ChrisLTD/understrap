@@ -190,3 +190,4 @@ function get_menu_array_from_location($location) {
   $locations = get_nav_menu_locations();
   $menu = wp_get_nav_menu_object( $locations[$location] );
   return wp_get_nav_menu_items($menu->term_id);
+}
