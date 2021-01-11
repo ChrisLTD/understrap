@@ -51,6 +51,7 @@ Thumbs.db
 .sass-cache
 
 .idea
+.vscode
 .htaccess
 /resources*
 .stignore
